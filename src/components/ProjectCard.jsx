@@ -4,29 +4,27 @@ const ProjectCard = ({ project }) => {
   const [showToast, setShowToast] = useState(false);
 
   const handleClick = () => {
-    // Show toast
     setShowToast(true);
-    // Hide toast after 2 seconds
     setTimeout(() => setShowToast(false), 2000);
   };
 
   return (
     <div className="relative bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:scale-105 transition duration-300">
 
-      {/* image */}
+      {/* Image */}
       <img
-        src={project.image}
-        alt={project.title}
+        src={project?.image || "https://via.placeholder.com/300x180"}
+        alt={project?.title || "Project Image"}
         className="w-full h-48 object-cover"
       />
 
-      {/* content */}
+      {/* Content */}
       <div className="p-4">
-        <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-        <p className="text-gray-300 text-sm mb-3">{project.description}</p>
-        <span className="text-xs bg-gray-700 px-2 py-1 rounded">{project.tech}</span>
+        <h3 className="text-xl font-semibold mb-2">{project?.title}</h3>
+        <p className="text-gray-300 text-sm mb-3">{project?.description}</p>
+        <span className="text-xs bg-gray-700 px-2 py-1 rounded">{project?.tech}</span>
 
-        {/* buttons */}
+        {/* Buttons */}
         <div className="flex gap-3 mt-4">
           <button
             onClick={handleClick}
@@ -44,7 +42,7 @@ const ProjectCard = ({ project }) => {
         </div>
       </div>
 
-      {/* Toast popup */}
+      {/* Toast popup on button click */}
       {showToast && (
         <div className="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded shadow-lg animate-fade">
           ⚠️ This project is not hosted yet!
